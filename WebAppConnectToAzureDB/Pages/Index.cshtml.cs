@@ -9,13 +9,16 @@ namespace WebAppConnectToAzureDB.Pages
     {
       public List<Product> productList;
 
+        private readonly IProductService _productService;
+        public IndexModel(IProductService productService)
+        {
+            _productService = productService;
+        }
 
         public void OnGet()
         {
-            productList = new List<Product>();
-            ProductService prodcuctService = new();
 
-            productList = prodcuctService.GetProducts();
+            productList = _productService.GetProducts();
 
            
         }
